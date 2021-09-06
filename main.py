@@ -2,8 +2,9 @@ import json
 
 # Change color of messages
 class colors:
-  OKGREEN = "\033[92m"
   FAIL    = "\033[91m"
+  NORMAL  = "\033[0m"
+  OKGREEN = "\033[92m"
 
 print("###################################################")
 print("# __          _______ _  _______   _______     __ #")
@@ -80,8 +81,8 @@ def editPage(pageName):
 
     elif i["isLocked"] == "True":
       if i["wikiPageName"] == pageName:
-        print("Page is currently locked. You can still view it though!\n")
-        print(i["wikiPageContent"])
+        print(colors.FAIL + "Page is currently locked. You can still view it though!\n")
+        print(colors.NORMAL + i["wikiPageContent"])
 
 # View page code
 def viewPage(pageName):
