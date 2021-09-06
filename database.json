@@ -1,5 +1,9 @@
 {
-    "wikiPage": [
-
-    ]
+  "wikiPage": [
+    {
+      "wikiPageName": "Help",
+      "wikiPageContent": "Thank you for installing wiki.py! wiki.py is a wiki software made entirely with the Python console. This is the help page for it.\n\nTo add a page, do \"addPage(pageName)\". Keep in mind that the page will not be added if it already exists. To view a page, do \"viewPage(pageName)\". If you want to edit a page, do \"editPage(pageName)\".\n\nKeep in mind that the edit function is still a WIP.",
+      "isLocked": "True"
+    }
+  ]
 }
