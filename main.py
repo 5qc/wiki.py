@@ -15,7 +15,7 @@ bannedWords   = open("bannedWords.json")
 banned        = json.load(bannedWords)
 
 for i in site["wikiInfo"]:
-  if i["wikiName"] == "wiki.py":
+  if i["wikiName"] == "New Wiki":
     print(colors.NORMAL + "###################################################")
     print("# __          _______ _  _______   _______     __ #")
     print("# \ \        / /_   _| |/ /_   _| |  __ \ \   / / #")
