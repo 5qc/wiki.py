@@ -11,8 +11,8 @@ siteInfo      = open("wikiInfo.json")
 site          = json.load(siteInfo)
 pagesDatabase = open("database.json")
 pages         = json.load(pagesDatabase)
-bannedWords   = open("bannedWords.json") # Not in use yet
-banned        = json.load(bannedWords)   # Not in use yet
+bannedWords   = open("bannedWords.json")
+banned        = json.load(bannedWords)
 
 for i in site["wikiInfo"]:
   if i["wikiName"] == "wiki.py":
