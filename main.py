@@ -103,11 +103,12 @@ def viewPage(pageName):
   if pageName != i["wikiPageName"]:
     print(colors.FAIL + "Page doesn't exist.")
 
-# Special pages
 #######################################
 ## THESE ARE NOT MEANT TO BE EDITED. ##
 ##   PLEASE DO EDIT ANY OF THESE!!   ##
 #######################################
+
+# Special pages
 def specialPage(pageName):
   if pageName == "AllPages":
     for i in pages["wikiPage"]:
