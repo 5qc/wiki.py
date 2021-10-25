@@ -67,9 +67,6 @@ def addPage(pageName):
     }
     writePage(y)
 
-def createPage(pageName): # Alias for "addPage"
-  addPage(pageName)
-
 # Edit page code
 def editPage(pageName):
   for i in pages["wikiPage"]:
@@ -93,6 +90,8 @@ def editPage(pageName):
         print(colors.NORMAL + i["wikiPageContent"])
   if i["wikiPageName"] != pageName:
     print(colors.FAIL + "Page doesn't exist.")
+def edit(pageName): # Alias for "editPage"
+  editPage(pageName)
 
 # View page code
 def viewPage(pageName):
