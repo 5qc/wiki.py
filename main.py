@@ -11,9 +11,8 @@ siteInfo      = open("wikiInfo.json")
 site          = json.load(siteInfo)
 pagesDatabase = open("database.json")
 pages         = json.load(pagesDatabase)
-
-bannedWords   = ["fuck", "Fuck"]
-item          = bannedWords[0]
+bannedWords   = open("bannedWords.json") # Not in use yet
+banned        = json.load(bannedWords)   # Not in use yet
 
 for i in site["wikiInfo"]:
   if i["wikiName"] == "wiki.py":
@@ -30,18 +29,26 @@ for i in site["wikiInfo"]:
     print("Welcome to wiki.py! The revolutionary wiki made entirely from")
     print("Python, and does not use anything else! Created by @roc0ast3r")
     print("on September 5, 2021, we have gone so far since our first")
-    print("creation. Type viewPage(\"Help\") for more info on this wiki.")
+    print("creation. Type viewPage(\"Help\") for more info on this software.")
   else:
-    print("Welcome to the", i["wikiName"])
+    print("Welcome to", i["wikiName"])
 
 #############
 # Main Code #
 #############
 # Add page code
 def addPage(pageName):
-  print(colors.MESSAGE + "Now creating page:", pageName)
-  print(colors.NORMAL + "")
-  pageContent = input("")
+  for bannedWord in banned["bannedWords"]:
+    if pageName == bannedWord:
+      return print(colors.FAIL + "Page contains a banned word.")
+  if pageName != bannedWord:
+    for i in pages["wikiPage"]:
+      if pageName == i["wikiPageName"]:
+        return print(colors.FAIL + "Page already exists.")
+    if pageName != i["wikiPageName"]:
+      print(colors.MESSAGE + "Now creating page:", pageName)
+      print(colors.NORMAL)
+      pageContent = input("")
 
   if pageContent == "":
     print(colors.FAIL + "Page not created. You did not put any content.")
@@ -60,6 +67,9 @@ def addPage(pageName):
     }
     writePage(y)
 
+def createPage(pageName): # Alias for "addPage"
+  addPage(pageName)
+
 # Edit page code
 def editPage(pageName):
   for i in pages["wikiPage"]:
@@ -74,13 +84,15 @@ def editPage(pageName):
         with open("database.json") as infile:
           data = json.load(infile)
         for elem in data["wikiPage"]:
-          elem["wikiPageContent"]=elem["wikiPageContent"].replace(i["wikiPageContent"], pageContent)
+          elem["wikiPageContent"] = elem["wikiPageContent"].replace(i["wikiPageContent"], pageContent)
         with open("database.json", "w") as outfile:
           json.dump(data, outfile, indent=2)
     elif i["isLocked"] == "True":
       if i["wikiPageName"] == pageName:
         print(colors.MESSAGE + "Page is currently locked. You can still view it though!\n")
         print(colors.NORMAL + i["wikiPageContent"])
+  if i["wikiPageName"] != pageName:
+    print(colors.FAIL + "Page doesn't exist.")
 
 # View page code
 def viewPage(pageName):
@@ -88,8 +100,14 @@ def viewPage(pageName):
     if pageName == i["wikiPageName"]:
       print(colors.MESSAGE + "Now viewing page:", pageName, "\n")
       print(colors.NORMAL + i["wikiPageContent"])
+  if pageName != i["wikiPageName"]:
+    print(colors.FAIL + "Page doesn't exist.")
 
 # Special pages
+#######################################
+## THESE ARE NOT MEANT TO BE EDITED. ##
+##   PLEASE DO EDIT ANY OF THESE!!   ##
+#######################################
 def specialPage(pageName):
   if pageName == "AllPages":
     for i in pages["wikiPage"]:
