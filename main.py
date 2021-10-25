@@ -75,7 +75,7 @@ def editPage(pageName):
         # Print the first part of edit message
         print(colors.MESSAGE + "Now editing page:", pageName)
         print(colors.NORMAL + "")
-        pageContent = input()
+        pageContent = input(i["wikiPageContent"])
 
         # Change the content once done
         with open("database.json") as infile:
@@ -84,10 +84,12 @@ def editPage(pageName):
           elem["wikiPageContent"] = elem["wikiPageContent"].replace(i["wikiPageContent"], pageContent)
         with open("database.json", "w") as outfile:
           json.dump(data, outfile, indent=2)
+
+        return print(colors.OKGREEN + "Successfully edited page.")
     elif i["isLocked"] == "True":
       if i["wikiPageName"] == pageName:
         print(colors.MESSAGE + "Page is currently locked. You can still view it though!\n")
-        print(colors.NORMAL + i["wikiPageContent"])
+        return print(colors.NORMAL + i["wikiPageContent"])
   if i["wikiPageName"] != pageName:
     print(colors.FAIL + "Page doesn't exist.")
 def edit(pageName): # Alias for "editPage"
@@ -98,7 +100,7 @@ def viewPage(pageName):
   for i in pages["wikiPage"]:
     if pageName == i["wikiPageName"]:
       print(colors.MESSAGE + "Now viewing page:", pageName, "\n")
-      print(colors.NORMAL + i["wikiPageContent"])
+      return print(colors.NORMAL + i["wikiPageContent"])
   if pageName != i["wikiPageName"]:
     print(colors.FAIL + "Page doesn't exist.")
 
