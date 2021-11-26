@@ -31,7 +31,7 @@ for i in site["wikiInfo"]:
     print("on September 5, 2021, we have gone so far since our first")
     print("creation. Type viewPage(\"Help\") for more info on this software.")
   else:
-    print("Welcome to", i["wikiName"])
+    print(colors.NORMAL + "Welcome to", i["wikiName"])
 
 #############
 # Main Code #
