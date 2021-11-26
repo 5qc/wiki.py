@@ -39,8 +39,8 @@ for i in site["wikiInfo"]:
 # Add page code
 def addPage(pageName):
   for bannedWord in banned["bannedWords"]:
-    if pageName == bannedWord:
-      return print(colors.FAIL + "Page name is a banned word.")
+    if bannedWord in pageName:
+      return print(colors.FAIL + "Pagename contains a banned word.")
   if pageName != bannedWord:
     for i in pages["wikiPage"]:
       if pageName == i["wikiPageName"]:
