@@ -15,7 +15,7 @@ bannedWords   = open("bannedWords.json")
 banned        = json.load(bannedWords)
 
 for i in site["wikiInfo"]:
-  if i["wikiName"] == "New Wiki":
+  if i["wikiName"] == "wiki.py":
     print(colors.NORMAL + "###################################################")
     print("# __          _______ _  _______   _______     __ #")
     print("# \ \        / /_   _| |/ /_   _| |  __ \ \   / / #")
@@ -40,7 +40,7 @@ for i in site["wikiInfo"]:
 def addPage(pageName):
   for bannedWord in banned["bannedWords"]:
     if pageName == bannedWord:
-      return print(colors.FAIL + "Page contains a banned word.")
+      return print(colors.FAIL + "Page name is a banned word.")
   if pageName != bannedWord:
     for i in pages["wikiPage"]:
       if pageName == i["wikiPageName"]:
