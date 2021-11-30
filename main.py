@@ -3,7 +3,7 @@ import json
 # Change color of messages
 class colors:
   FAIL    = "\033[91m"
-  MESSAGE = '\033[93m'
+  MESSAGE = "\033[93m"
   NORMAL  = "\033[0m"
   OKGREEN = "\033[92m"
 
