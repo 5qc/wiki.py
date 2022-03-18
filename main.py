@@ -106,7 +106,7 @@ def viewPage(pageName):
 
 #######################################
 ## THESE ARE NOT MEANT TO BE EDITED. ##
-##   PLEASE DO EDIT ANY OF THESE!!   ##
+## PLEASE DO NOT EDIT ANY OF THESE!! ##
 #######################################
 
 # Special pages
